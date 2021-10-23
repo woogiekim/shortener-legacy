@@ -1,6 +1,4 @@
-package com.wook.shortener;
-
-import static org.junit.jupiter.api.Assertions.*;
+package com.shorten.shortener;
 
 import org.junit.jupiter.api.Test;
 

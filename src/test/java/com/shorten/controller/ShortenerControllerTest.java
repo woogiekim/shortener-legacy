@@ -1,4 +1,4 @@
-package com.wook.controller;
+package com.shorten.controller;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
