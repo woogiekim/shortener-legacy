@@ -1,32 +1,29 @@
 package com.wook.controller;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Builder.Default;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
-@Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode
+@Getter
+@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Response<T> {
 
-  @Default
-  private int code = HttpStatus.OK.value();
+  @JsonIgnore
+  private final HttpStatus status;
 
-  @Default
-  private String message = HttpStatus.OK.name();
+  private final int code;
 
-  private T body;
+  private final String message;
 
-  public static <T> Response<T> ok(T body) {
-    return Response
-        .<T>builder()
-        .body(body)
-        .build();
+  private final T body;
+
+  public static <T> Response<T> of(final HttpStatus status, final T body) {
+    return new Response<>(status, status.value(), status.getReasonPhrase(), body);
+  }
+
+  public static <T> Response<T> ok(final T body) {
+    return of(HttpStatus.OK, body);
   }
 }
