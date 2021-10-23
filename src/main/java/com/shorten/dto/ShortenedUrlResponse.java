@@ -1,4 +1,4 @@
-package com.shorten.domain.dto;
+package com.shorten.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
