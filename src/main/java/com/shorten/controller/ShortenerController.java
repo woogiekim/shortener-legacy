@@ -1,6 +1,6 @@
-package com.wook.controller;
+package com.shorten.controller;
 
-import com.wook.shortener.Base62Generator;
+import com.shorten.shortener.Base62Generator;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
