@@ -1,4 +1,4 @@
-package com.wook.controller;
+package com.shorten.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;

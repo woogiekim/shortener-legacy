@@ -1,4 +1,4 @@
-package com.wook.shortener;
+package com.shorten.shortener;
 
 import java.util.HashMap;
 import java.util.Map;
