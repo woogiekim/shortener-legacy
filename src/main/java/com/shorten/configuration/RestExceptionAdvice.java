@@ -1,4 +1,4 @@
-package com.shorten.configuration.advice;
+package com.shorten.configuration;
 
 import com.shorten.controller.Response;
 import org.springframework.http.HttpStatus;
