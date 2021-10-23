@@ -1,5 +1,6 @@
-package com.shorten.controller;
+package com.shorten.configuration.advice;
 
+import com.shorten.controller.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
