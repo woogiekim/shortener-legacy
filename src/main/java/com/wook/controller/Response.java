@@ -1,6 +1,8 @@
 package com.wook.controller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +19,7 @@ public class Response<T> {
 
   private final String message;
 
+  @JsonInclude(Include.NON_NULL)
   private final T body;
 
   public static <T> Response<T> of(final HttpStatus status, final T body) {
@@ -25,5 +28,9 @@ public class Response<T> {
 
   public static <T> Response<T> ok(final T body) {
     return of(HttpStatus.OK, body);
+  }
+
+  public static <T> Response<T> error(final HttpStatus status, final String message) {
+    return new Response<>(status, status.value(), message, null);
   }
 }
