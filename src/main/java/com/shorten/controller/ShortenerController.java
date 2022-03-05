@@ -21,7 +21,7 @@ public class ShortenerController {
 
   private final ShortenerService shortenerService;
 
-  @PostMapping("/shortener")
+  @PostMapping("/shorten")
   public ResponseEntity<ShortenedUrlResponse> shorten(@RequestBody final ShortenedUrlRequest request) {
     final Shortener shortener = shortenerService.shorten(OriginUrl.of(request.getOriginalUrl()));
 
