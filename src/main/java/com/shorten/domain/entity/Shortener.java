@@ -3,6 +3,7 @@ package com.shorten.domain.entity;
 import java.net.URI;
 import java.util.Objects;
 import lombok.Getter;
+import org.springframework.util.Assert;
 
 public class Shortener {
 
@@ -12,20 +13,11 @@ public class Shortener {
   private final ShortenUrl shortenUrl;
 
   protected Shortener(final OriginUrl originUrl, final ShortenUrl shortenUrl) {
-    verifyShortener(originUrl, shortenUrl);
+    Assert.notNull(originUrl, "기본주소 정보가 없습니다.");
+    Assert.notNull(shortenUrl, "짧은주소 정보가 없습니다.");
 
     this.originUrl = originUrl;
     this.shortenUrl = shortenUrl;
-  }
-
-  private void verifyShortener(final OriginUrl originUrl, final ShortenUrl shortenUrl) {
-    if (Objects.isNull(originUrl)) {
-      throw new IllegalArgumentException("기본주소 정보가 없습니다.");
-    }
-
-    if (Objects.isNull(shortenUrl)) {
-      throw new IllegalArgumentException("짧은주소 정보가 없습니다.");
-    }
   }
 
   public static Shortener of(final OriginUrl originUrl, final ShortenUrl shortenUrl) {
