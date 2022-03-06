@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+@Slf4j
 @RestControllerAdvice(annotations = RestController.class)
 public class RestExceptionAdvice {
 
@@ -21,11 +23,15 @@ public class RestExceptionAdvice {
 
   @ExceptionHandler(Exception.class)
   public Response error(final Exception e) {
+    log.error(e.getMessage(), e);
+
     return Response.error(HttpStatus.INTERNAL_SERVER_ERROR, "오류가 발생했습니다. 관리자에게 문의해주세요.");
   }
 
   @ExceptionHandler(RuntimeException.class)
   public Response error(final RuntimeException e) {
+    log.error(e.getMessage(), e);
+
     return Response.error(HttpStatus.BAD_REQUEST, e.getMessage());
   }
 

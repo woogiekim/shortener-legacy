@@ -30,7 +30,6 @@ public class ShortenerController {
 
   @GetMapping("/{shortenPath}")
   public ResponseEntity<Object> redirect(@PathVariable final ShortenPath shortenPath) {
-    System.out.println(shortenPath);
     final Shortener shortener = shortenerService.getShortener(shortenPath);
 
     return ResponseEntity.status(HttpStatus.FOUND)
